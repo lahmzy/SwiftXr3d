@@ -36,7 +36,7 @@ function Hotspot({ position, label, onDelete }: HotspotProps) {
   
   return (
       <group position={position}>
-      {/* Subtle indicator that's only visible on hover */}
+      
       {hovered && (
         <mesh>
           <sphereGeometry args={[0.05]} />
@@ -48,8 +48,8 @@ function Hotspot({ position, label, onDelete }: HotspotProps) {
         <div 
           className="text-white px-2 py-1 rounded text-xs cursor-pointer whitespace-nowrap"
           style={{ 
-            background: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background
-            backdropFilter: 'blur(4px)' // Frosted glass effect (optional)
+            background: 'rgba(0, 0, 0, 0.3)', 
+            backdropFilter: 'blur(4px)'
           }}
           onPointerEnter={() => setHovered(true)}
           onPointerLeave={() => setHovered(false)}
@@ -145,7 +145,7 @@ export default function SwiftXR3DEditor() {
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Clean up object URLs when component unmounts or model changes
+  // To Clean up object URLs when component unmounts or model changes
   useEffect(() => {
     return () => {
       if (modelUrl) {
@@ -166,7 +166,7 @@ export default function SwiftXR3DEditor() {
     setIsLoading(true);
     setError(null);
     
-    // Revoke previous URL if exists
+    // Helps to remove previous URL if exists
     if (modelUrl) {
       URL.revokeObjectURL(modelUrl);
     }
@@ -201,7 +201,7 @@ export default function SwiftXR3DEditor() {
   };
 
   return (
-    <div className="w-full h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex flex-col">
+    <section className="w-full h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex flex-col">
   
       <header className="bg-gray-800 shadow-lg border-b border-gray-700 p-4">
         <h1 className="text-2xl font-bold text-white mb-4">SwiftXR 3D Mini-Editor</h1>
@@ -249,7 +249,7 @@ export default function SwiftXR3DEditor() {
       </header>
 
       {/* 3Dimen Viewport */}
-      <main className="flex-1 relative">
+      <main className="flex-1 relative ">
         {!modelUrl ? (
           <div className="flex items-center justify-center h-full bg-gray-800">
             <div className="text-center p-8 bg-gray-700 rounded-xl shadow-lg">
@@ -310,6 +310,6 @@ export default function SwiftXR3DEditor() {
           </div>
         )}
       </main>
-    </div>
+    </section>
   );
 }
